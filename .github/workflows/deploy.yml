@@ -27,13 +27,13 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-node-version: 20
+          node-version: 24
           cache: 'npm'
-          cache-dependency-path: psicologia-site/client/package-lock.json
+          cache-dependency-path: psicologia-site/package-lock.json
 
       - name: Install and Build
         run: |
-          cd psicologia-site/client
+          cd psicologia-site
           npm install
           npm run build
 
@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './psicologia-site/client/dist'
+          path: './psicologia-site/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
